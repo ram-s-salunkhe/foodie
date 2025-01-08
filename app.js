@@ -1,29 +1,33 @@
 import React from "react";
-import ReactDOM from 'react-dom/client';
+import ReactDOM from "react-dom/client";
 
-const heading = React.createElement("h1", {id:"heading", xyz:"xyz"}, "Hello World from React!");
+// React.createElement => ReactElement - JS Object  => HTMLElement (render)
+
+const heading = React.createElement("h1", { id: "heading" }, "Namaste React!");
 const root = ReactDOM.createRoot(document.getElementById("root"));
-// console.log(heading); // return object
 
-/**
- * <div id="parent">
- *      <div id="child">
- *          <h1>I'am h1 tag</h1>
- *      </div> 
- * </div> 
- */
+// JSX - HTML like Or XML like syntax
+// JSX Transpile before it reaches the JS engine - (bable does transpilation)
+// JSX => React.createElement => ReactElement - JS Object  => HTMLElement (render)
 
-const parent = React.createElement("div", {id:"parent"}, [
-    React.createElement("div", 
-    {id: "child"}, [
-      React.createElement("h1", {}, "This is react"), 
-      React.createElement("h2", {}, "I'am h2 tag")
-    ]),
-    React.createElement("div", 
-    {id: "child"}, [
-      React.createElement("h1", {}, "I'am h1 tag"), 
-      React.createElement("h2", {}, "I'am h2 tag")
-    ])
-])
+// React Element
+const title = <h1>This is React Element</h1>;
 
-root.render(parent);
+// React Component
+const Title = () => <h1>This is React Component</h1>;
+
+// React functional Components
+const HeadingComponent = () => {
+  return (
+    <div id="container">
+      {title}
+      <Title />
+      {Title()}
+      <h2>{100 + 200}</h2>
+      <h3>{console.log("HEllo")}</h3>
+      <h1 className="heading">Namaste React Functional component </h1>;
+    </div>
+  );
+};
+
+root.render(<HeadingComponent/>);
